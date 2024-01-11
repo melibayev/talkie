@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/layout";
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route>
+      <Route element={<Layout />}>
 
       </Route>
     </Routes>
