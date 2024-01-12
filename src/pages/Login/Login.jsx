@@ -1,10 +1,10 @@
-import { Fragment } from "react"
+import { Fragment, useState } from "react"
+import { NavLink } from "react-router-dom";
 import { BiShow, BiHide } from "react-icons/bi";
 import styles from './Login.module.scss'
 
 import GIF from '../../assets/login/bg.gif'
 import LOGO from '../../assets/login/logo.png'
-import { useState } from "react";
 
 
 const Login = () => {
@@ -38,7 +38,7 @@ const [ passwordShow, setPasswordShow ] = useState(false)
                         </form>
                         <div className={styles['form-info-sign-up-message']}>
                             <p>Don't have an account?</p>
-                            <span>Sign up now</span>
+                            <NavLink to={'/register'}>Sign up now</NavLink>
                         </div>
                         <div className={styles['form-info-credits']}>
                             © Talkie 2024
