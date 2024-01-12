@@ -40,6 +40,9 @@ const [ passwordShow, setPasswordShow ] = useState(false)
                             <p>Don't have an account?</p>
                             <span>Sign up now</span>
                         </div>
+                        <div className={styles['form-info-credits']}>
+                            © Talkie 2024
+                        </div>
                     </div>
                     <div className={styles['form-gif']}>
                         <img src={GIF} alt="" />
