@@ -98,5 +98,4 @@ const stopLoading = (index) => {
         </section>
   )
 }
-
 export default Register
