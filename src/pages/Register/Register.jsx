@@ -21,7 +21,7 @@ const [ passwordShow, setPasswordShow ] = useState(false)
                         <img src={LOGO} alt="logo" />                        
                         <h1>Welcome to Talkie!</h1>
                         <form>
-                            <input type="text" placeholder="Enter your name" required />
+                            <input type="email" placeholder="Enter your email" required />
                             <input type="text" placeholder="Enter your username" required />
                             <div className={styles['password']}>
                                 <input type={passwordShow ? 'text' : 'password'} placeholder="Set your password" required />
