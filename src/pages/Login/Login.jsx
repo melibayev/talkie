@@ -9,23 +9,23 @@ import GIF from '../../assets/login/bg.gif'
 import LOGO from '../../assets/login/logo.png'
 import { useForm } from "react-hook-form";
 import { Button } from "antd";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
-const [ passwordShow, setPasswordShow ] = useState(false)
-const [loading, setLoading] = useState([]);
-const [ haveError, setHaveError ] = useState(false)
-const [ error, setError ] = useState('')
 const {
     register, 
     handleSubmit,
 } = useForm()
+const [ passwordShow, setPasswordShow ] = useState(false)
+const [loading, setLoading] = useState([]);
+const [ haveError, setHaveError ] = useState(false)
+const [ error, setError ] = useState('')
 const submit = async (data) => {
     try {
       await loginValidation.validate(data);
       setHaveError(false);
       enterLoading(0)
-  
       try {
         enterLoading(0)
         let res = await request.post('Auth/login', data);

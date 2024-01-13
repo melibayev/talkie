@@ -74,13 +74,16 @@
                 color: rgba(0, 122, 255, 1);
             }
         }
-        button {
-            padding: 10px 24px;
+        &-button {
+            height: 40px;
             font-size: 16px;
             border-radius: 6px;
             margin-bottom: 24px;
             color: #fff;
             background-color: rgba(0, 122, 255, 1);
+            span {
+                color: #fff;
+            }
         }
         &-sign-up-message {
             display: flex;
@@ -91,6 +94,13 @@
             a {
                 color: rgba(0, 122, 255, 1);
             }
+        }
+        &-error-message {
+            padding: 0 10px;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+            color: red;
         }
         &-credits {
             position: absolute;
