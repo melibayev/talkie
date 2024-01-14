@@ -1,0 +1,8 @@
+@import '../../common/variables';
+
+aside {
+    position: fixed;
+    width: $aside-width;
+    height: 100%;
+    background-color: green;
+}

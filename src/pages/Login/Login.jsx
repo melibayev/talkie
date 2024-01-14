@@ -1,15 +1,20 @@
 import { Fragment, useState } from "react"
 import { NavLink } from "react-router-dom";
-import { BiShow, BiHide } from "react-icons/bi";
-import styles from './Login.module.scss'
-import loginValidation from "../../validation/loginValidation";
-import { request } from '../../server/request'
-
-import GIF from '../../assets/login/bg.gif'
-import LOGO from '../../assets/login/logo.png'
 import { useForm } from "react-hook-form";
+import Cookies from "js-cookie";
+
+// local imports
+import { TOKEN } from "../../const";
+import { request } from '../../server/request'
+import loginValidation from "../../validation/loginValidation";
+import { useAuth } from "../../context/AuthContext";
+// design
 import { Button } from "antd";
-import { toast } from "react-toastify";
+import styles from './Login.module.scss'
+// icons and images
+import { BiShow, BiHide } from "react-icons/bi";
+import LOGO from '../../assets/login/logo.png'
+import GIF from '../../assets/login/bg.gif'
 
 
 const Login = () => {
@@ -21,6 +26,8 @@ const [ passwordShow, setPasswordShow ] = useState(false)
 const [loading, setLoading] = useState([]);
 const [ haveError, setHaveError ] = useState(false)
 const [ error, setError ] = useState('')
+const { authenticated, setAuthenticated } = useAuth() 
+console.log(authenticated);
 const submit = async (data) => {
     try {
       await loginValidation.validate(data);
@@ -29,6 +36,9 @@ const submit = async (data) => {
       try {
         enterLoading(0)
         let res = await request.post('Auth/login', data);
+        Cookies.set(TOKEN, res.data.token)
+        setAuthenticated(true)
+        console.log(authenticated);
         console.log(res);
       } catch (error) {
         stopLoading(0)

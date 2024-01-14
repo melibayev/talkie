@@ -1,0 +1,9 @@
+@import '../../common/variables';
+
+header {
+    position: fixed;
+    width: calc(100% - $aside-width);
+    left: $aside-width;
+    height: $header-height;
+    background-color: red;
+}

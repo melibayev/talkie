@@ -85,7 +85,7 @@ const stopLoading = (index) => {
                                 </div>
                             </div>                            
                             <Button htmlType="submit" loading={loading[0]} className={styles['form-info-button']}>
-                                Sign in
+                                Sign up
                             </Button>
                         </form>
                         <div className={styles['form-info-error-message']}>{haveError ? error : ''}</div>
