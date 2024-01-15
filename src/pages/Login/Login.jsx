@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react"
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 
@@ -26,8 +26,8 @@ const [ passwordShow, setPasswordShow ] = useState(false)
 const [loading, setLoading] = useState([]);
 const [ haveError, setHaveError ] = useState(false)
 const [ error, setError ] = useState('')
-const { authenticated, setAuthenticated } = useAuth() 
-console.log(authenticated);
+const { authenticated, setAuthenticated } = useAuth()
+const navigate = useNavigate() 
 const submit = async (data) => {
     try {
       await loginValidation.validate(data);
@@ -38,6 +38,7 @@ const submit = async (data) => {
         let res = await request.post('Auth/login', data);
         Cookies.set(TOKEN, res.data.token)
         setAuthenticated(true)
+        navigate('/profile')
         console.log(authenticated);
         console.log(res);
       } catch (error) {
@@ -78,7 +79,7 @@ const stopLoading = (index) => {
                             <div className={styles['password']}>
                                 <input type={passwordShow ? 'text' : 'password'} placeholder="Password" {...register('password', { required: true })}/>
                                 <div onClick={() => setPasswordShow(!passwordShow)}>
-                                    { passwordShow ? <BiHide /> : <BiShow /> } 
+                                    { passwordShow ? <BiShow /> : <BiHide /> } 
                                 </div>
                             </div>                            
                             <div className={styles['form-info-extra']}>

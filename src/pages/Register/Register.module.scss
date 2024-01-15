@@ -15,7 +15,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 900px;
-    height: 540px;
+    height: 580px;
     border-radius: 12px;
     background-color: #fff;
     .password {
@@ -42,7 +42,7 @@
         form  {
             display: flex;
             flex-direction: column;
-            row-gap: 24px;
+            row-gap: 18px;
             margin-top: 24px;
         }
         input {
@@ -78,11 +78,21 @@
             height: 40px;
             font-size: 16px;
             border-radius: 6px;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
             color: #fff;
             background-color: rgba(0, 122, 255, 1);
             span {
                 color: #fff;
+            }
+        }
+        &-agreement {
+            padding: 0 10px;
+            font-size: 12px;
+            margin-bottom: 16px;
+            line-height: 18px;
+            text-align: center;
+            a {
+                color: rgba(0, 122, 255, 1);
             }
         }
         &-sign-up-message {
@@ -91,6 +101,7 @@
             justify-content: center;
             column-gap: 8px;
             font-size: 12px;
+            margin-bottom: 18px;
             a {
                 color: rgba(0, 122, 255, 1);
             }

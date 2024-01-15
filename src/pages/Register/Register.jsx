@@ -1,5 +1,5 @@
 import { BiShow, BiHide } from "react-icons/bi";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './Register.module.scss'
 
@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import registerValidation from "../../validation/registerValidation";
 import { request } from "../../server/request";
 import { Button } from "antd";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = () => {
 const {
@@ -42,7 +42,7 @@ const submit = async (data) => {
       } catch (error) {
         stopLoading(0)
         setHaveError(true);
-        setError('Your account is not found. Check your username and password');
+        setError('Username has already taken.');
       }
     } catch (validationError) {
       stopLoading(0)
@@ -81,13 +81,20 @@ const stopLoading = (index) => {
                             <div className={styles['password']}>
                                 <input type={passwordShow ? 'text' : 'password'} placeholder="Set your password" {...register('password', { required: true })} />
                                 <div onClick={() => setPasswordShow(!passwordShow)}>
-                                    { passwordShow ? <BiHide /> : <BiShow /> } 
+                                    { passwordShow ? <BiShow /> : <BiHide /> } 
                                 </div>
                             </div>                            
                             <Button htmlType="submit" loading={loading[0]} className={styles['form-info-button']}>
                                 Sign up
                             </Button>
                         </form>
+                        <div className={styles['form-info-agreement']}>
+                            <p>By signing up, you agree to our <NavLink to={'https://www.termsandconditionsgenerator.com/live.php?token=pJjEvK4QUkIgpv4zETXIJ2rKdHWwYwIY'} target='_blank'>Terms of Use</NavLink> and acknowledge you have read the <NavLink to={'https://www.freeprivacypolicy.com/live/92e6233a-24a5-4e98-bb49-d75ee49e921b'} target='_blank'>Privacy Policy</NavLink></p>
+                        </div>
+                        <div className={styles['form-info-sign-up-message']}>
+                            <p>Already have an account?</p>
+                            <NavLink to={'/login'}>Sign in</NavLink>
+                        </div>
                         <div className={styles['form-info-error-message']}>{haveError ? error : ''}</div>
                         <div className={styles['form-info-credits']}>
                             © Talkie 2024
